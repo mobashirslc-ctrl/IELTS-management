@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router"; // 💡 useNavigate import kora hoyeche
 import {
   GraduationCap,
   Globe,
@@ -18,17 +18,18 @@ import { useState } from "react";
 
 export default function LandingPage() {
   const [showLogin, setShowLogin] = useState(true);
+  const navigate = useNavigate(); // 💡 navigate function initialize kora hoyeche
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // Navigate to dashboard after login
-    window.location.href = "/dashboard";
+    // 🚀 Heavy reload chhara smoothly dashboard route-e jabe
+    navigate("/dashboard"); 
   };
 
   const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
-    // Navigate to dashboard after registration
-    window.location.href = "/dashboard";
+    // 🚀 Smooth router route change
+    navigate("/dashboard"); 
   };
 
   const features = [
@@ -105,7 +106,6 @@ export default function LandingPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Side - Hero Content */}
           <div>
-            {/* IELTS Badge */}
             <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full mb-8 shadow-xl">
               <Award size={24} />
               <span className="font-bold text-lg">Official IELTS Partner Portal</span>
@@ -174,7 +174,6 @@ export default function LandingPage() {
           {/* Right Side - Login/Register Form */}
           <div>
             <div className="bg-white rounded-3xl shadow-2xl p-8 border border-gray-200">
-              {/* Form Header */}
               <div className="text-center mb-8">
                 <div className="w-20 h-20 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-xl">
                   <BookOpen size={40} className="text-white" />
@@ -189,7 +188,6 @@ export default function LandingPage() {
                 </p>
               </div>
 
-              {/* Login Form */}
               {showLogin ? (
                 <form onSubmit={handleLogin} className="space-y-5">
                   <div>
@@ -241,7 +239,6 @@ export default function LandingPage() {
                   </button>
                 </form>
               ) : (
-                // Register Form
                 <form onSubmit={handleRegister} className="space-y-5">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
@@ -337,7 +334,6 @@ export default function LandingPage() {
                 </form>
               )}
 
-              {/* Toggle Text */}
               <div className="mt-6 text-center">
                 <p className="text-gray-600">
                   {showLogin ? "Don't have an account? " : "Already have an account? "}
@@ -351,7 +347,6 @@ export default function LandingPage() {
               </div>
             </div>
 
-            {/* Trust Badges */}
             <div className="mt-6 flex items-center justify-center gap-6">
               <div className="flex items-center gap-2 text-gray-600">
                 <CheckCircle size={20} className="text-green-500" />
@@ -370,7 +365,6 @@ export default function LandingPage() {
         </div>
       </div>
 
-      {/* Footer */}
       <footer className="bg-gray-900 text-white py-8 mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
